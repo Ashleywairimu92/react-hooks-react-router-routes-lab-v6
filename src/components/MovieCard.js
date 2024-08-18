@@ -1,13 +1,21 @@
-import {Link} from 'react-router-dom';
+import React from 'react';
+import { NavBar } from './NavBar'; 
 
-function MovieCard({title}) {
-  
+const MovieDetail = ({ movie }) => {
+  if (!movie) return <p>Loading...</p>; 
+
   return (
-    <article>
-        <h2>{title}</h2>
-        {/* What should go here? */}
-    </article>
+    <div>
+      <NavBar />
+      <h1>{movie.title}</h1>
+      <p>{movie.time} minutes</p>
+      <div>
+        {movie.genres.map((genre, index) => (
+          <span key={index}>{genre}</span>
+        ))}
+      </div>
+    </div>
   );
 };
 
-export default MovieCard;
+export default MovieDetail;
